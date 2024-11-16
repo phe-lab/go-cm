@@ -1,12 +1,12 @@
 # go-cm/log
 
-- ZeroLog integration
-- Support request logging with Resty
+- [ZeroLog](https://github.com/rs/zerolog) integration
+- Support logging [Resty](https://github.com/go-resty/resty) HTTP requests
 
 ## Installation
 
 ```bash
-go get -u github.com/phe-lab/go-cm/log
+go get github.com/phe-lab/go-cm/log@v0.2.0
 ```
 
 ## Usage
