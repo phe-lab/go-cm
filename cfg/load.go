@@ -33,8 +33,10 @@ func LoadConfig(o interface{}, opt LoadOptions) error {
 	var finalErr error
 
 	// Read from YAML file
-	if err := k.Load(file.Provider(opt.Filename), yaml.Parser()); err != nil {
-		finalErr = err
+	if opt.Filename != "" {
+		if err := k.Load(file.Provider(opt.Filename), yaml.Parser()); err != nil {
+			finalErr = err
+		}
 	}
 
 	// Read from environment variables
@@ -43,8 +45,10 @@ func LoadConfig(o interface{}, opt LoadOptions) error {
 	}
 
 	// Read from command-line flags
-	if err := k.Load(posflag.Provider(opt.Flags, ".", k), nil); err != nil {
-		finalErr = err
+	if opt.Flags != nil {
+		if err := k.Load(posflag.Provider(opt.Flags, ".", k), nil); err != nil {
+			finalErr = err
+		}
 	}
 
 	// Unmarshal config
