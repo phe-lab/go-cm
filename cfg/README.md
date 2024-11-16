@@ -1,6 +1,6 @@
 # go-cm/cfg
 
-- Koanf integrated for reading configuration
+- [Koanf](https://github.com/koanf/koanf) integrated for reading configuration
 - Read configuration from YAML file, environment variables and command-line flags
 
 ## Installation
