@@ -4,6 +4,7 @@ import (
 	"strings"
 
 	"github.com/knadh/koanf/parsers/yaml"
+	"github.com/knadh/koanf/providers/confmap"
 	"github.com/knadh/koanf/providers/env"
 	"github.com/knadh/koanf/providers/file"
 	"github.com/knadh/koanf/providers/posflag"
@@ -31,6 +32,13 @@ var k = koanf.New(".")
 // An error if any of the sources fail to load or if the unmarshaling process fails.
 func LoadConfig(o interface{}, opt LoadOptions) error {
 	var finalErr error
+
+	// Load default values
+	if opt.DefaultValues != nil {
+		if err := k.Load(confmap.Provider(*opt.DefaultValues, "."), nil); err != nil {
+			finalErr = err
+		}
+	}
 
 	// Read from YAML file
 	if opt.Filename != "" {

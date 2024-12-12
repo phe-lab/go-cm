@@ -7,7 +7,8 @@ import "github.com/spf13/pflag"
 // - Flags: Command-line flags provided by the application.
 // - EnvPrefix: The prefix for environment variables to load into the configuration.
 type LoadOptions struct {
-	Filename  string
-	Flags     *pflag.FlagSet
-	EnvPrefix string
+	Filename      string
+	Flags         *pflag.FlagSet
+	EnvPrefix     string
+	DefaultValues *map[string]interface{}
 }
