@@ -11,9 +11,6 @@ import (
 	"github.com/knadh/koanf/v2"
 )
 
-// k is the global instance of the Koanf library used for managing configuration.
-var k = koanf.New(".")
-
 // LoadConfig loads configuration from multiple sources (file, environment variables, and flags)
 // and unmarshals it into the given interface.
 //
@@ -31,6 +28,8 @@ var k = koanf.New(".")
 // Returns:
 // An error if any of the sources fail to load or if the unmarshaling process fails.
 func LoadConfig(o interface{}, opt LoadOptions) error {
+	// k is the global instance of the Koanf library used for managing configuration.
+	var k = koanf.New(".")
 	var finalErr error
 
 	// Load default values
